@@ -3,13 +3,16 @@
 ;;;
 
 (define-module wiliki.cgi-throttle
-  (export test-wiliki_cgi_throttle              ;dummy
-          ))
+  (use www.cgi.throttle)
+  (export wiliki-main/throttle
+          cgi-throttle-connection       ;re-export
+          cgi-throttle-config))         ;re-export
 (select-module wiliki.cgi-throttle)
 
-(define (test-wiliki_cgi_throttle)              ;dummy
-  "wiliki_cgi_throttle is working")
+(autoload wiliki wiliki-main)
 
-;;
-;; Put your Scheme definitions here
-;;
+(define (wiliki-main/throttle wiliki-instance)
+  (cgi-throttle
+   (cgi-throttle-connection)
+   (cgi-throttle-config)
+   (cut wiliki-main wiliki-instance)))
