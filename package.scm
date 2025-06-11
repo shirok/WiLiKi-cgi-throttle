@@ -21,7 +21,7 @@
   ;;     :require (("Gauche" (>= "0.9.5"))  ; requires Gauche 0.9.5 or later
   ;;               ("Gauche-gl" "0.6"))     ; and Gauche-gl 0.6
   :require (("Gauche" (>= "0.9.15"))
-            ("WiLiKi" (>= "0.8.3"))
+            ("WiLiKi" (>= "0.8.2"))
             ("Gauche-www-cgi-throttle" (>= "0.2.2_pre1")))
 
   ;; List of providing modules

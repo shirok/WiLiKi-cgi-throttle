@@ -24,7 +24,7 @@ PACKAGE   = WiLiKi-cgi-throttle
 TARGET    =
 SCMFILES  = wiliki/cgi-throttle.scm
 
-GENERATED =
+GENERATED = test.dbm test.log
 CONFIG_GENERATED = Makefile config.cache config.log config.status \
 		   configure.lineno autom4te*.cache $(PACKAGE).gpd
 
