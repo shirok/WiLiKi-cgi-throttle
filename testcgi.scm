@@ -3,9 +3,10 @@
 ;; Test CGI
 ;;
 
-(use wiliki)
 (add-load-path "." :relative)
 (use wiliki.cgi-throttle)
+
+(autoload wiliki <wiliki>)
 
 (define (main args)
   (wiliki-main/throttle

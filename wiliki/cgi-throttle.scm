@@ -16,8 +16,18 @@
  `((POST :window 30 :count 10)
    (GET  :window 30 :count 15)))
 
-(define (wiliki-main/throttle wiliki-instance)
+;; We delay evaluation of instance generation, so that we can avoid
+;; loading wiliki when cgi-throttle rejects service.
+(define-syntax wiliki-main/throttle
+  (syntax-rules ()
+    [(_ wiliki-instance)
+     (%wiliki-main/throttle (lambda () wiliki-instance))]))
+
+(define (%wiliki-main/throttle thunk)
   (cgi-throttle
    (cgi-throttle-connection)
    (cgi-throttle-config)
-   (cut wiliki-main wiliki-instance)))
+   (^[]
+     (let* ([wiliki-main-proc wiliki-main] ;ensures wiliki is autoloaded here
+            [wiliki-instance (thunk)])
+       (wiliki-main-proc wiliki-instance)))))
