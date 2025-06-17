@@ -19,7 +19,7 @@ them alone if the default is suffice.
 ## Prerequisites
 
 - [Gauche](https://practical-scheme.net/gauche)
-- [WiLiKi[(https://github.com/shirok/WiLiKi)
+- [WiLiKi](https://github.com/shirok/WiLiKi)
 - [Gauche-www-cgi-throttle](https://github.com/shirok/Gauche-www-cgi-throttle)
 - [Gauche-memcache](https://github.com/tabe/Gauche-memcache) required by Gauche-www-cgi-throttle
 
