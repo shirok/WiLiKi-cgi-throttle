@@ -62,6 +62,11 @@ returns 503 instead of passing control to WiLiKi routine.
 
 ## Delaying loading wiliki
 
+If the scraper is banging your site, you want to reject it
+as lightly as possible.  Loading `wiliki` module itself taxes
+the server.  You can set autoload on `wiliki` module so that
+it won't be loaded if cgi-throttle decided not to serve the client.
+
 ```
 (use wiliki.cgi-throttle)
 
@@ -75,4 +80,19 @@ returns 503 instead of passing control to WiLiKi routine.
       ...)))
 ```
 
+Note that if you refer to other wiliki API in the script,
+you need to list it in the autoload.
+
 ## Customizing behavior
+
+The criteria to trigger throttle, and how to handle exessive access,
+can be customized with the parameter `cgi-throttle-config`.
+
+The connection to the memcached can be specified by the parameter
+`cgi-throttle-connection`.
+
+Both are defined in `www.cgi.throttle`
+and reexported from  `wiliki.cgi-throttle` for the convenience.
+See the documentation of
+[www.cgi.throttle](https://github.com/shirok/Gauche-www-cgi-throttle),
+for the details.
